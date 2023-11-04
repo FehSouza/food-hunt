@@ -8,7 +8,7 @@ export const Header = styled.header`
   margin: 0 auto;
   padding: 32px 16px;
   box-sizing: border-box;
-  border-bottom: 1px solid red;
+  z-index: 1;
 
   @media (max-width: 768px) {
     justify-content: space-between;

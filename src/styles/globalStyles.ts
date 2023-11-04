@@ -13,11 +13,15 @@ export const GlobalStyles = css`
     font-display: swap;
     font-size: 14px;
     font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.04em;
   }
 
   #root {
     width: 100vw;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
   h1,
@@ -35,6 +39,8 @@ export const GlobalStyles = css`
     font-display: swap;
     font-size: 14px;
     font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.04em;
   }
 
   button,
@@ -49,6 +55,8 @@ export const GlobalStyles = css`
     font-display: swap;
     font-size: 14px;
     font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0.04em;
   }
 
   input[type='number']::-webkit-inner-spin-button {
