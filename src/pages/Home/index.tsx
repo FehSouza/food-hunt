@@ -6,18 +6,17 @@ import dish2 from '../../assets/images/dish2.png'
 import dish3 from '../../assets/images/dish3.png'
 import dish4 from '../../assets/images/dish4.png'
 import { DescriptionContainer, Header } from '../../components'
-import { dispatchNameTheme, useNameTheme } from '../../states/index.ts'
 import * as S from './styles.ts'
 
 export const Home = () => {
   const [list, setList] = useState([dish1, dish2, dish3, dish4, dish1, dish2, dish3, dish4])
   const [currentItem, setCurrentItem] = useState(list[0])
   const [direction, setDirection] = useState(1)
-  const [nameTheme] = useNameTheme()
+  const [themeA, setThemeA] = useState(true)
 
   const handleNext = () => {
     setDirection(1)
-    dispatchNameTheme(nameTheme === 'colorsA' ? 'colorsB' : 'colorsA')
+    setThemeA((prev) => !prev)
 
     const position = list.indexOf(currentItem)
     const nextPosition = position + 1
@@ -29,7 +28,7 @@ export const Home = () => {
 
   const handlePrev = () => {
     setDirection(-1)
-    dispatchNameTheme(nameTheme === 'colorsA' ? 'colorsB' : 'colorsA')
+    setThemeA((prev) => !prev)
 
     const position = list.indexOf(currentItem)
     const prevPosition = position - 1
@@ -58,10 +57,10 @@ export const Home = () => {
       <Header />
 
       <S.Main>
-        <DescriptionContainer />
+        <DescriptionContainer theme={themeA} />
 
-        <S.BackgroundContainer>
-          <S.Border />
+        <S.BackgroundContainer $themeA={themeA}>
+          <S.Border $themeA={themeA} />
 
           <S.ListItemsContainer>
             <AnimatePresence key={`list-${currentItem}`}>
@@ -84,7 +83,7 @@ export const Home = () => {
         </S.BackgroundContainer>
 
         <S.CarrouselContainer>
-          <S.ButtonArrow onClick={handlePrev}>
+          <S.ButtonArrow onClick={handlePrev} $themeA={themeA}>
             <AiOutlineArrowDown size={28} />
           </S.ButtonArrow>
 
@@ -100,7 +99,7 @@ export const Home = () => {
             />
           </AnimatePresence>
 
-          <S.ButtonArrow onClick={handleNext}>
+          <S.ButtonArrow onClick={handleNext} $themeA={themeA}>
             <AiOutlineArrowDown size={28} />
           </S.ButtonArrow>
         </S.CarrouselContainer>

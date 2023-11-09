@@ -12,14 +12,14 @@ export const Main = styled.main`
   box-sizing: border-box;
 `
 
-export const BackgroundContainer = styled.div`
+export const BackgroundContainer = styled.div<{ $themeA: boolean }>`
   width: 1176px;
   height: 1176px;
   position: fixed;
   bottom: 0;
   right: 0;
   transform: translate(15%, -20%);
-  background-color: ${({ theme }) => theme.colors.primaryLight};
+  background-color: ${({ theme, $themeA }) => ($themeA ? theme.colors.primaryLight : theme.colors.secondaryLight)};
   border-radius: 50%;
   z-index: 0;
   overflow: hidden;
@@ -31,7 +31,7 @@ export const BackgroundContainer = styled.div`
   }
 `
 
-export const Border = styled.div`
+export const Border = styled.div<{ $themeA: boolean }>`
   width: 556px;
   height: 556px;
   position: absolute;
@@ -40,7 +40,7 @@ export const Border = styled.div`
   transform: translate(-50%, 45%);
   background-color: transparent;
   border-radius: 50%;
-  border: 2px dashed ${({ theme }) => theme.colors.primary};
+  border: 2px dashed ${({ theme, $themeA }) => ($themeA ? theme.colors.primary : theme.colors.secondary)};
   transition-duration: 350ms;
 
   @media (max-width: 768px) {
@@ -121,19 +121,19 @@ export const CarrouselContainer = styled.section`
   }
 `
 
-export const ButtonArrow = styled.button`
+export const ButtonArrow = styled.button<{ $themeA: boolean }>`
   width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 32px;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme, $themeA }) => ($themeA ? theme.colors.primary : theme.colors.secondary)};
   border-radius: 50%;
   transition-duration: 350ms;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.primary850};
+    background-color: ${({ theme, $themeA }) => ($themeA ? theme.colors.primary850 : theme.colors.secondary850)};
   }
 
   svg {

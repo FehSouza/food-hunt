@@ -11,12 +11,12 @@ export const DescriptionContainer = styled.section`
   }
 `
 
-export const TitleHighlight = styled.h2`
+export const TitleHighlight = styled.h2<{ $themeA: boolean }>`
   font-size: 48px;
   font-weight: 500;
   line-height: 72px;
   letter-spacing: 0em;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme, $themeA }) => ($themeA ? theme.colors.primary : theme.colors.secondary)};
   transition-duration: 350ms;
 
   @media (max-width: 768px) {
@@ -59,19 +59,19 @@ export const Text = styled.p`
   }
 `
 
-export const Button = styled.button`
+export const Button = styled.button<{ $themeA: boolean }>`
   min-width: 164px;
   width: fit-content;
   margin-top: 32px;
   padding: 14px 32px;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme, $themeA }) => ($themeA ? theme.colors.primary : theme.colors.secondary)};
   border-radius: 48px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.white};
   transition-duration: 350ms;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.primary850};
+    background-color: ${({ theme, $themeA }) => ($themeA ? theme.colors.primary850 : theme.colors.secondary850)};
   }
 
   @media (max-width: 768px) {
