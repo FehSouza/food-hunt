@@ -1,17 +1,53 @@
+import { AnimatePresence } from 'framer-motion'
+import { useState } from 'react'
 import { AiOutlineArrowDown } from 'react-icons/ai'
 import dish1 from '../../assets/images/dish1.png'
 import dish2 from '../../assets/images/dish2.png'
 import dish3 from '../../assets/images/dish3.png'
 import dish4 from '../../assets/images/dish4.png'
-import dish5 from '../../assets/images/dish5.png'
-import dish6 from '../../assets/images/dish6.png'
-import dish7 from '../../assets/images/dish7.png'
-import dish8 from '../../assets/images/dish8.png'
 import { DescriptionContainer, Header } from '../../components'
 import * as S from './styles.ts'
 
 export const Home = () => {
-  const list = [dish1, dish2, dish3, dish4, dish5, dish6, dish7, dish8]
+  const [list, setList] = useState([dish1, dish2, dish3, dish4, dish1, dish2, dish3, dish4])
+  const [currentItem, setCurrentItem] = useState(list[0])
+  const [direction, setDirection] = useState(1)
+
+  const handleNext = () => {
+    setDirection(1)
+
+    const position = list.indexOf(currentItem)
+    const nextPosition = position + 1
+    setCurrentItem(position === list.length - 1 ? list[0] : list[nextPosition])
+
+    const [current, ...currentList] = list
+    setList([...currentList, current])
+  }
+
+  const handlePrev = () => {
+    setDirection(-1)
+
+    const position = list.indexOf(currentItem)
+    const prevPosition = position - 1
+    setCurrentItem(position === 0 ? list[list.length - 1] : list[prevPosition])
+
+    const currentList = [...list]
+    const lastItem = currentList.pop()
+    if (!lastItem) throw new Error('Last item undefined')
+    setList([lastItem, ...currentList])
+  }
+
+  const rotationAngle = 360 / list.length
+
+  const variantsList = {
+    initial: { rotate: direction === 1 ? rotationAngle : -rotationAngle },
+    animate: { rotate: 0 },
+    exit: { rotate: direction === 1 ? rotationAngle : -rotationAngle },
+  } as const
+
+  const variantsItem = { initial: { scale: 0 }, animate: { scale: 1 }, exit: { scale: 0 } } as const
+
+  const transition = { duration: 0.45, type: 'just' }
 
   return (
     <>
@@ -23,25 +59,44 @@ export const Home = () => {
         <S.BackgroundContainer>
           <S.Border />
 
-          <S.ListItems>
-            {list.map((item, index) => (
-              <S.Item key={index} $index={index}>
-                <S.Image src={item} />
-              </S.Item>
-            ))}
-          </S.ListItems>
+          <S.ListItemsContainer>
+            <AnimatePresence key={`list-${currentItem}`}>
+              <S.ListItems
+                layoutId={`list-${currentItem}`}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+                variants={variantsList}
+                transition={transition}
+              >
+                {list.map((item, index) => (
+                  <S.Item key={index} $index={index} $length={list.length}>
+                    <S.Image src={item} />
+                  </S.Item>
+                ))}
+              </S.ListItems>
+            </AnimatePresence>
+          </S.ListItemsContainer>
         </S.BackgroundContainer>
 
         <S.CarrouselContainer>
-          <S.ButtonArrow>
+          <S.ButtonArrow onClick={handlePrev}>
             <AiOutlineArrowDown size={28} />
           </S.ButtonArrow>
 
-          <S.CurrentItem>
-            <S.Image src={dish1} />
-          </S.CurrentItem>
+          <AnimatePresence>
+            <S.CurrentImage
+              src={currentItem}
+              key={`item-${currentItem}`}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+              variants={variantsItem}
+              transition={transition}
+            />
+          </AnimatePresence>
 
-          <S.ButtonArrow>
+          <S.ButtonArrow onClick={handleNext}>
             <AiOutlineArrowDown size={28} />
           </S.ButtonArrow>
         </S.CarrouselContainer>

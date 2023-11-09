@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 export const Main = styled.main`
@@ -25,11 +26,7 @@ export const BackgroundContainer = styled.div`
 
   @media (max-width: 768px) {
     right: 50%;
-    transform: translate(50%, -15%);
-  }
-
-  @media (max-height: 740px) and (max-width: 768px) {
-    transform: translate(50%, -10%);
+    transform: translate(50%, -12%);
   }
 `
 
@@ -51,24 +48,29 @@ export const Border = styled.div`
   }
 `
 
-export const ListItems = styled.div`
+export const ListItemsContainer = styled.div`
   width: 556px;
   height: 556px;
-  display: flex;
-  align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 45%);
+  transform: translate(-50%, 45%) rotate(90deg);
 
   @media (max-width: 768px) {
     width: 368px;
     height: 368px;
-    transform: translate(-50%, 102%);
+    transform: translate(-50%, 104%) rotate(90deg);
   }
 `
 
-export const Item = styled.div<{ $index: number }>`
+export const ListItems = styled(motion.div)`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+`
+
+export const Item = styled(motion.div)<{ $index: number; $length: number }>`
   width: 100px;
   height: 100px;
   display: flex;
@@ -76,7 +78,7 @@ export const Item = styled.div<{ $index: number }>`
   justify-content: center;
   position: absolute;
   left: -50px;
-  transform: rotate(${({ $index }) => `${$index / 8}turn`});
+  transform: rotate(${({ $index, $length }) => `${$index / $length}turn`});
   transform-origin: calc(556px / 2 + 100px / 2);
   overflow: hidden;
 
@@ -88,6 +90,7 @@ export const Item = styled.div<{ $index: number }>`
 export const Image = styled.img`
   width: 150%;
   display: flex;
+  transform: rotate(270deg);
 `
 
 export const CarrouselContainer = styled.section`
@@ -96,19 +99,23 @@ export const CarrouselContainer = styled.section`
   align-items: flex-end;
   justify-content: center;
   flex: 1;
+  gap: 516px;
+  padding-bottom: 122px;
   position: fixed;
   bottom: 0;
   right: 0;
-  transform: translate(15%, -35%);
+  transform: translate(15%, 0);
   z-index: 1;
 
   @media (max-width: 768px) {
+    gap: 328px;
+    padding-bottom: 80px;
     right: 50%;
-    transform: translate(50%, -35%);
+    transform: translate(50%, 0);
   }
 
-  @media (max-height: 740px) and (max-width: 768px) {
-    transform: translate(50%, -10%);
+  @media (max-width: 400px) {
+    gap: 296px;
   }
 `
 
@@ -118,7 +125,7 @@ export const ButtonArrow = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
   background-color: ${({ theme }) => theme.colors.primary};
   border-radius: 50%;
   transition-duration: 350ms;
@@ -130,20 +137,21 @@ export const ButtonArrow = styled.button`
   svg {
     fill: ${({ theme }) => theme.colors.white};
   }
-`
-
-export const CurrentItem = styled.div`
-  width: 292px;
-  height: 292px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 112px;
-  overflow: hidden;
 
   @media (max-width: 768px) {
-    margin: 0 40px;
-    width: 208px;
-    height: 208px;
+    margin-bottom: 0;
+  }
+`
+
+export const CurrentImage = styled(motion.img)`
+  width: 432px;
+  height: 432px;
+  position: absolute;
+  bottom: 32px;
+
+  @media (max-width: 768px) {
+    width: 304px;
+    height: 304px;
+    bottom: 0;
   }
 `
