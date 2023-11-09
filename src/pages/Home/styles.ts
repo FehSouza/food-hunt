@@ -23,6 +23,7 @@ export const BackgroundContainer = styled.div`
   border-radius: 50%;
   z-index: 0;
   overflow: hidden;
+  transition-duration: 350ms;
 
   @media (max-width: 768px) {
     right: 50%;
@@ -40,6 +41,7 @@ export const Border = styled.div`
   background-color: transparent;
   border-radius: 50%;
   border: 2px dashed ${({ theme }) => theme.colors.primary};
+  transition-duration: 350ms;
 
   @media (max-width: 768px) {
     width: 368px;

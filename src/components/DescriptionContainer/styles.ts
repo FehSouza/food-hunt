@@ -17,6 +17,7 @@ export const TitleHighlight = styled.h2`
   line-height: 72px;
   letter-spacing: 0em;
   color: ${({ theme }) => theme.colors.primary};
+  transition-duration: 350ms;
 
   @media (max-width: 768px) {
     font-size: 40px;

@@ -6,15 +6,18 @@ import dish2 from '../../assets/images/dish2.png'
 import dish3 from '../../assets/images/dish3.png'
 import dish4 from '../../assets/images/dish4.png'
 import { DescriptionContainer, Header } from '../../components'
+import { dispatchNameTheme, useNameTheme } from '../../states/index.ts'
 import * as S from './styles.ts'
 
 export const Home = () => {
   const [list, setList] = useState([dish1, dish2, dish3, dish4, dish1, dish2, dish3, dish4])
   const [currentItem, setCurrentItem] = useState(list[0])
   const [direction, setDirection] = useState(1)
+  const [nameTheme] = useNameTheme()
 
   const handleNext = () => {
     setDirection(1)
+    dispatchNameTheme(nameTheme === 'colorsA' ? 'colorsB' : 'colorsA')
 
     const position = list.indexOf(currentItem)
     const nextPosition = position + 1
@@ -26,6 +29,7 @@ export const Home = () => {
 
   const handlePrev = () => {
     setDirection(-1)
+    dispatchNameTheme(nameTheme === 'colorsA' ? 'colorsB' : 'colorsA')
 
     const position = list.indexOf(currentItem)
     const prevPosition = position - 1
