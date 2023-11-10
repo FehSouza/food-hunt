@@ -10,6 +10,8 @@ Assim como no estudo inicial, foi realizada a implantação do carrossel apenas 
 
 UI: [Figma](https://www.figma.com/file/c20w32PL8BAczJVXo7BA8X/Food-web-app-design?node-id=0%3A1) - criado por [Building Amazing Things](https://www.youtube.com/watch?v=CBf0BOaIBVw&ab_channel=BuildingAmazingThings)
 
+<img src="./src/assets/images/projeto.png">
+
 &nbsp;
 
 ## Tecnologias usadas
@@ -33,3 +35,9 @@ yarn install
 Para rodar o Front-end:
 
 yarn vite
+
+&nbsp;
+
+## Link Netlify
+
+https://food-hunt-feh.netlify.app/

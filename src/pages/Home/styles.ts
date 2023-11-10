@@ -27,7 +27,7 @@ export const BackgroundContainer = styled.div<{ $themeA: boolean }>`
 
   @media (max-width: 768px) {
     right: 50%;
-    transform: translate(50%, -12%);
+    transform: translate(50%, -11%);
   }
 `
 
@@ -111,7 +111,7 @@ export const CarrouselContainer = styled.section`
 
   @media (max-width: 768px) {
     gap: 328px;
-    padding-bottom: 80px;
+    padding-bottom: 64px;
     right: 50%;
     transform: translate(50%, 0);
   }
@@ -154,6 +154,6 @@ export const CurrentImage = styled(motion.img)`
   @media (max-width: 768px) {
     width: 304px;
     height: 304px;
-    bottom: 0;
+    bottom: -16px;
   }
 `
