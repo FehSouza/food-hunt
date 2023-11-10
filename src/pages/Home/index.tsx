@@ -8,6 +8,9 @@ import dish4 from '../../assets/images/dish4.png'
 import { DescriptionContainer, Header } from '../../components'
 import * as S from './styles.ts'
 
+const variantsItem = { initial: { scale: 0 }, animate: { scale: 1 }, exit: { scale: 0 } } as const
+const transition = { duration: 0.45, type: 'just' }
+
 export const Home = () => {
   const [list, setList] = useState([dish1, dish2, dish3, dish4, dish1, dish2, dish3, dish4])
   const [currentItem, setCurrentItem] = useState(list[0])
@@ -47,10 +50,6 @@ export const Home = () => {
     animate: { rotate: 0 },
     exit: { rotate: direction === 1 ? rotationAngle : -rotationAngle },
   } as const
-
-  const variantsItem = { initial: { scale: 0 }, animate: { scale: 1 }, exit: { scale: 0 } } as const
-
-  const transition = { duration: 0.45, type: 'just' }
 
   return (
     <>
