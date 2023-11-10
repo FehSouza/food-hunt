@@ -2,13 +2,22 @@ import styled from 'styled-components'
 
 export const Header = styled.header`
   width: 100%;
-  max-width: 1132px;
+  max-width: 1824px;
   display: flex;
   align-items: center;
   margin: 0 auto;
-  padding: 32px 16px;
+  padding: 32px 64px;
   box-sizing: border-box;
   z-index: 1;
+
+  @media (max-width: 1820px) {
+    padding: 32px 80px;
+  }
+
+  @media (max-width: 1360px) {
+    max-width: 1132px;
+    padding: 32px 16px;
+  }
 
   @media (max-width: 768px) {
     justify-content: space-between;

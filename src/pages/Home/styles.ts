@@ -3,13 +3,21 @@ import styled from 'styled-components'
 
 export const Main = styled.main`
   width: 100%;
-  max-width: 1132px;
+  max-width: 1824px;
   display: flex;
   flex: 1;
   margin: 0 auto;
-  padding: 0 16px;
-  padding-bottom: 122px;
+  padding: 0 64px 122px;
   box-sizing: border-box;
+
+  @media (max-width: 1820px) {
+    padding: 0 80px 122px;
+  }
+
+  @media (max-width: 1360px) {
+    max-width: 1132px;
+    padding: 0 16px 122px;
+  }
 `
 
 export const BackgroundContainer = styled.div<{ $themeA: boolean }>`
