@@ -15,10 +15,12 @@ export const Home = () => {
   const [list, setList] = useState([dish1, dish2, dish3, dish4, dish1, dish2, dish3, dish4])
   const [currentItem, setCurrentItem] = useState(list[0])
   const [direction, setDirection] = useState(1)
+  const [rotationQuantity, setRotationQuantity] = useState(1)
   const [themeA, setThemeA] = useState(true)
 
   const handleNext = () => {
     setDirection(1)
+    setRotationQuantity(1)
     setThemeA((prev) => !prev)
 
     const position = list.indexOf(currentItem)
@@ -31,6 +33,7 @@ export const Home = () => {
 
   const handlePrev = () => {
     setDirection(-1)
+    setRotationQuantity(1)
     setThemeA((prev) => !prev)
 
     const position = list.indexOf(currentItem)
@@ -43,7 +46,22 @@ export const Home = () => {
     setList([lastItem, ...currentList])
   }
 
-  const rotationAngle = 360 / list.length
+  const handleSelectItem = (index: number) => {
+    if (index === 0) return
+    const middle = list.length / 2
+    const rightSide = index < middle
+
+    setDirection(rightSide ? 1 : -1)
+    setRotationQuantity(rightSide ? index : list.length - index)
+    setThemeA((prev) => !prev)
+    setCurrentItem(list[index])
+
+    const endArray = [...list].splice(index)
+    const startArray = [...list].splice(0, index)
+    setList([...endArray, ...startArray])
+  }
+
+  const rotationAngle = (360 / list.length) * rotationQuantity
 
   const variantsList = {
     initial: { rotate: direction === 1 ? rotationAngle : -rotationAngle },
@@ -72,7 +90,7 @@ export const Home = () => {
                 transition={transition}
               >
                 {list.map((item, index) => (
-                  <S.Item key={index} $index={index} $length={list.length}>
+                  <S.Item key={index} $index={index} $length={list.length} onClick={() => handleSelectItem(index)}>
                     <S.Image src={item} />
                   </S.Item>
                 ))}

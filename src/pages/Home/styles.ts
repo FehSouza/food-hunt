@@ -92,6 +92,10 @@ export const Item = styled(motion.div)<{ $index: number; $length: number }>`
   transform-origin: calc(556px / 2 + 100px / 2);
   overflow: hidden;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   @media (max-width: 768px) {
     transform-origin: calc(368px / 2 + 100px / 2);
   }

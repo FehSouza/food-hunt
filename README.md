@@ -8,6 +8,8 @@ Foi desenvolvido a partir do intuito de dar continuidade no estudo de carrosséi
 
 Assim como no estudo inicial, foi realizada a implantação do carrossel apenas com HTML, CSS e React (sem bibliotecas que criem carrosséis), mas desta vez utilizando o Framer Motion para as animações.
 
+O carrossel foi montado com 8 pratos, porém aceita receber mais ou menos itens sem comprometer suas funcionalidades.
+
 UI: [Figma](https://www.figma.com/file/c20w32PL8BAczJVXo7BA8X/Food-web-app-design?node-id=0%3A1) - criado por [Building Amazing Things](https://www.youtube.com/watch?v=CBf0BOaIBVw&ab_channel=BuildingAmazingThings)
 
 <img src="./src/assets/images/projeto.png">
