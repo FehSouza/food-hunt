@@ -5,6 +5,7 @@ export const Main = styled.main`
   width: 100%;
   max-width: 1824px;
   display: flex;
+  align-items: flex-end;
   flex: 1;
   margin: 0 auto;
   padding: 0 64px 122px;
@@ -17,6 +18,10 @@ export const Main = styled.main`
   @media (max-width: 1360px) {
     max-width: 1132px;
     padding: 0 16px 122px;
+  }
+
+  @media (max-width: 1120px) {
+    align-items: flex-start;
   }
 `
 

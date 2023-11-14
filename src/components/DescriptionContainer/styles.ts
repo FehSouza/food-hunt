@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const DescriptionContainer = styled.section`
+  height: fit-content;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
