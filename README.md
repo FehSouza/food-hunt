@@ -2,7 +2,7 @@
 
 ## Contexto
 
-Este projeto trata-se do desenvolvimento de uma página de exibição de um carrosel circular.
+Este projeto trata-se do desenvolvimento de uma página de exibição de um carrossel circular.
 
 Foi desenvolvido a partir do intuito de dar continuidade no estudo de carrosséis iniciado com o [carousel-study](https://github.com/FehSouza/carousel-study), porém dessa vez com o desafio de fazer no formato circular.
 
